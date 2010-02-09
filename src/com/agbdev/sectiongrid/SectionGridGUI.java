@@ -25,6 +25,10 @@ public class SectionGridGUI {
 
     private void initComponents() {
     	this.grid = new SwingSectionGrid();
+
+    	this.grid.addSection(new TestSection());
+    	this.grid.addSection(new TestSection());
+
     	this.frame.add((Component) this.grid.getImplementation());
     }
 
