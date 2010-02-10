@@ -25,13 +25,13 @@ public class GridDataModel {
 	}
 
 	public Object getValueAt(final int rowIndex, final int columnIndex) {
-		Row record = this.data.get(rowIndex);
+		Row row = this.data.get(rowIndex);
 		Column col = this.columns[columnIndex];
-		return record.getValue(col);
+		return row.getValue(col);
 	}
 
     public String getColumnName(final int col) {
-        return this.columns[col].name();
+        return this.columns[col].getTitleString();
     }
 
 }
