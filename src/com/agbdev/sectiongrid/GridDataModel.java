@@ -12,6 +12,10 @@ public class GridDataModel {
 		this.data = new ArrayList<Row>();
 	}
 
+	public void add(final Row row) {
+		this.data.add(row);
+	}
+
 	public int getNumColumns() {
 		return this.columns.length;
 	}
