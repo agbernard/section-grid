@@ -21,7 +21,7 @@ implements SectionGrid {
     	JScrollPane scrollPane = new JScrollPane(table);
     	table.setFillsViewportHeight(true);
 
-    	GridDataSource dataSource = section.getDataSource();
+    	GridDataModel model = section.getDataSource();
     	//populate table from data source
 
     	JPanel panel = new JPanel(new BorderLayout());
