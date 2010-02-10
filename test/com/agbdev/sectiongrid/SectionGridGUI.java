@@ -31,7 +31,8 @@ public class SectionGridGUI {
     }
 
     public void show() {
-    	this.frame.setVisible(true);
+    	this.frame.setLocationRelativeTo(null);
+    	this.frame.setVisible(true);    	
     }
 
     public static void main(final String[] args) {
