@@ -2,6 +2,10 @@ package com.agbdev.sectiongrid;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +47,11 @@ implements SectionGrid {
 		if(sectionHeader.isBold()) {
 			text = "<b>" + text + "</b>";
 		}
-		text += " (" + sectionHeader.getDesc() + ")";
+		
+		String desc = sectionHeader.getDesc();		
+		if (desc != null) {
+			text += " (" + sectionHeader.getDesc() + ")";
+		}
 		return new JLabel("<html>" + text + "</html>");
 	}
 
@@ -61,25 +69,21 @@ implements SectionGrid {
 	    }
 
 
-		@Override
 		public int getColumnCount() {
 			return this.model.getNumColumns();
 		}
 
-		@Override
 		public int getRowCount() {
 			return this.model.getNumRows();
 		}
 
-		@Override
 		public Object getValueAt(final int rowIndex, final int colIndex) {
 			return this.model.getValueAt(rowIndex, colIndex);
 		}
 
 	}
 
-	@Override
-    public Object getImplementation() {
+	public Object getImplementation() {
 		SpringUtilities.makeCompactGrid(this.pnlMain,
 		                                this.sections.size(), 1, //rows, cols
 		                                6, 6,        //initX, initY
@@ -87,9 +91,35 @@ implements SectionGrid {
 	    return this.pnlMain;
     }
 
-	@Override
-    public void updateSection(final ID id, final List<Row> data) {
-	    this.sections.get(id).update(data);
+	public void updateSection(final ID id, final List<Row> data) {
+	    GridDataModel model = this.sections.get(id).getDataModel();
+	    model.update(data);
     }
+
+	public void writeToCsv(String filePath) throws IOException {
+		File csvFile = new File(filePath);
+		Writer writer = null;
+		try {
+			writer = new FileWriter(csvFile);
+			boolean wroteHeader = false;
+			for (ID id : sections.keySet()) {
+				GridSection section = sections.get(id);
+				GridDataModel model = section.getDataModel();
+				GridDataWriter gridWriter = model.getWriter(writer);
+				
+				if(!wroteHeader) {
+					gridWriter.writeHeaderToStream();
+					wroteHeader = true;
+				}
+				
+				gridWriter.writeDataToStream();
+			}
+		} 
+		finally {
+			if(writer != null) {
+				writer.close();
+			}
+		}
+	}
 
 }
