@@ -1,6 +1,7 @@
 package com.agbdev.sectiongrid;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,14 +26,25 @@ implements SectionGrid {
 	public void addSection(final GridSection section) {
     	GridDataModel model = section.getDataModel();
     	JTable table = new JTable(new GridModel(model));
+    	table.setAutoCreateRowSorter(true);
     	JScrollPane scrollPane = new JScrollPane(table);
     	table.setFillsViewportHeight(true);
 
     	JPanel panel = new JPanel(new BorderLayout());
-    	panel.add(new JLabel(section.getName()), BorderLayout.PAGE_START);
+    	Component sectionHeader = getSectionHeading(section.getHeader());
+    	panel.add(sectionHeader, BorderLayout.PAGE_START);
     	panel.add(scrollPane, BorderLayout.CENTER);
     	this.pnlMain.add(panel);
     	this.sections.put(section.getId(), section);
+	}
+
+	private Component getSectionHeading(final GridSection.Header sectionHeader) {
+		String text = sectionHeader.getName();
+		if(sectionHeader.isBold()) {
+			text = "<b>" + text + "</b>";
+		}
+		text += " (" + sectionHeader.getDesc() + ")";
+		return new JLabel("<html>" + text + "</html>");
 	}
 
 	private final class GridModel extends AbstractTableModel {

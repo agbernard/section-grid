@@ -3,29 +3,28 @@ package com.agbdev.sectiongrid;
 import java.util.List;
 
 
-public class TestSection implements GridSection {
-	private int rowCount = 0;
-
+public class TestSection extends AbstractGridSection {
 	private GridDataModel model = new GridDataModel(Col.values());
 
-	@Override
-    public String getName() {
-	    return "Section 1";
+
+	public TestSection() {
+	    super("Test Section");
     }
 
 	@Override
     public GridDataModel getDataModel() {
-		this.model.add(getFakeRow(this.rowCount++));
-		this.model.add(getFakeRow(this.rowCount++));
-		this.model.add(getFakeRow(this.rowCount++));
-		this.model.add(getFakeRow(this.rowCount++));
-		this.model.add(getFakeRow(this.rowCount++));
-		this.model.add(getFakeRow(this.rowCount++));
-		this.model.add(getFakeRow(this.rowCount++));
-		this.model.add(getFakeRow(this.rowCount++));
-		this.model.add(getFakeRow(this.rowCount++));
-		this.model.add(getFakeRow(this.rowCount++));
-		this.model.add(getFakeRow(this.rowCount++));
+		int rowCount = 0;
+		this.model.add(getFakeRow(rowCount++));
+		this.model.add(getFakeRow(rowCount++));
+		this.model.add(getFakeRow(rowCount++));
+		this.model.add(getFakeRow(rowCount++));
+		this.model.add(getFakeRow(rowCount++));
+		this.model.add(getFakeRow(rowCount++));
+		this.model.add(getFakeRow(rowCount++));
+		this.model.add(getFakeRow(rowCount++));
+		this.model.add(getFakeRow(rowCount++));
+		this.model.add(getFakeRow(rowCount++));
+		this.model.add(getFakeRow(rowCount++));
 	    return this.model;
     }
 
