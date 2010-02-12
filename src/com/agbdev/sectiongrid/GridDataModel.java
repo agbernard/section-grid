@@ -17,8 +17,8 @@ public class GridDataModel {
 	}
 
 	public void update(final List<Row> data) {
-		data.clear();
-		data.addAll(data);
+		this.data.clear();
+		this.data.addAll(data);
 	}
 
 	public int getNumColumns() {
