@@ -1,5 +1,6 @@
 package com.agbdev.sectiongrid;
 
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,12 @@ public class GridDataModel {
 
     public String getColumnName(final int col) {
         return this.columns[col].getTitleString();
+    }
+
+    public GridDataWriter getWriter(final Writer writer) {
+    	GridDataWriter gridWriter = new GridDataWriter(this.data, this.columns);
+    	gridWriter.setStream(writer);
+    	return gridWriter;
     }
 
 }

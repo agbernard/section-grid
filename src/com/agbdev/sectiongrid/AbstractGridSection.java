@@ -1,5 +1,6 @@
 package com.agbdev.sectiongrid;
 
+
 public abstract class AbstractGridSection implements GridSection {
 	private Header header;
 
@@ -11,7 +12,6 @@ public abstract class AbstractGridSection implements GridSection {
 		this.header = getHeader(sectionName, desc);
 	}
 
-	@Override
 	public Header getHeader() {
 	    return this.header;
 	}
@@ -20,23 +20,19 @@ public abstract class AbstractGridSection implements GridSection {
 		return new Header() {
 			private boolean isBold;
 
-			@Override
 			public void setIsBold(final boolean isBold) {
 				this.isBold = isBold;
 			}
 
-			@Override
 			public boolean isBold() {
 				return this.isBold;
 			}
 
-			@Override
 			public String getName() {
 				return sectionName;
 			}
 
-			@Override
-            public String getDesc() {
+			public String getDesc() {
 	            return desc;
             }
 		};

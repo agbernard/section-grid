@@ -1,6 +1,5 @@
 package com.agbdev.sectiongrid;
 
-import java.util.List;
 
 public interface GridSection {
 	public interface ID {}
@@ -15,5 +14,4 @@ public interface GridSection {
 	public Header getHeader();
 	public GridDataModel getDataModel();
 	public ID getId();
-	public void update(List<Row> data);
 }
