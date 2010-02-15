@@ -14,4 +14,6 @@ public interface GridSection {
 	public Header getHeader();
 	public GridDataModel getDataModel();
 	public ID getId();
+	public void update();
+	public Object getImplementation();
 }

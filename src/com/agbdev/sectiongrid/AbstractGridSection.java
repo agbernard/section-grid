@@ -1,7 +1,9 @@
 package com.agbdev.sectiongrid;
 
 
+
 public abstract class AbstractGridSection implements GridSection {
+	private final ID id = new ID(){};
 	private Header header;
 
 	protected AbstractGridSection(final String sectionName) {
@@ -11,6 +13,10 @@ public abstract class AbstractGridSection implements GridSection {
 	protected AbstractGridSection(final String sectionName, final String desc) {
 		this.header = getHeader(sectionName, desc);
 	}
+
+	public ID getId() {
+	    return this.id;
+    }
 
 	public Header getHeader() {
 	    return this.header;
