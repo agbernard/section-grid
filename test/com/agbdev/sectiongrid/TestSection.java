@@ -1,14 +1,15 @@
 package com.agbdev.sectiongrid;
 
-public class TestSection extends AbstractGridSection {
+public class TestSection extends AbstractJTableGridSection {
 	private GridDataModel model = new GridDataModel(Col.values());
 
 
 	public TestSection() {
-	    super("Test Section");
+	    super("Test Section", null, new GridDataModel(Col.values()));
     }
 
-	public GridDataModel getDataModel() {
+	@Override
+    public GridDataModel getDataModel() {
 		int rowCount = 0;
 		this.model.add(getFakeRow(rowCount++));
 		this.model.add(getFakeRow(rowCount++));
@@ -52,7 +53,8 @@ public class TestSection extends AbstractGridSection {
 
 	}
 
-	public ID getId() {
+	@Override
+    public ID getId() {
 	    return new ID() {};
     }
 
