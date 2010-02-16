@@ -60,8 +60,6 @@ implements SectionGrid {
 		                                this.sections.size(), 1, //rows, cols
 		                                6, 6,        //initX, initY
 		                                6, 6);       //xPad, yPad
-
-
 	    return this.pnlMain;
     }
 
