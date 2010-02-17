@@ -70,8 +70,7 @@ implements SectionGrid {
 	    section.update();
     }
 
-	public void writeToCsv(final String filePath) throws IOException {
-		File csvFile = new File(filePath);
+	public void writeToCsv(final File csvFile) throws IOException {
 		Writer writer = null;
 		try {
 			writer = new FileWriter(csvFile);

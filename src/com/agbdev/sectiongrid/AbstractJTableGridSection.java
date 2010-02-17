@@ -43,7 +43,6 @@ public abstract class AbstractJTableGridSection extends AbstractGridSection {
 	        return this.model.getColumnName(col);
 	    }
 
-
 		public int getColumnCount() {
 			return this.model.getNumColumns();
 		}
