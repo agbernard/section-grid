@@ -65,9 +65,7 @@ implements SectionGrid {
 
 	public void updateSection(final ID id, final List<Row> data) {
 		GridSection section = this.sections.get(id);
-	    GridDataModel model = section.getDataModel();
-	    model.update(data);
-	    section.update();
+		section.update(data);
     }
 
 	public void writeToCsv(final File csvFile) throws IOException {
